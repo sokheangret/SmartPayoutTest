@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Smart Payout Test</string>
+    <string name="machine_name">Machine Name</string>
+    <string name="ip_address">IP Address</string>
+    <string name="port_number">Port Number</string>
+    <string name="group_number">Group Number</string>
+    <string name="buffer">Buffer</string>
+    <string name="connect">Connect</string>
+    <string name="mobile">Mobile</string>
+</resources>
