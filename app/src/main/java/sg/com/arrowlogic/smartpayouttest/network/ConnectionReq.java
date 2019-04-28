@@ -40,11 +40,10 @@ public class ConnectionReq extends AsyncTask<Void,Void,Void> {
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream(buffer);
             byte[] buffer = new byte[this.buffer];
 
-            //////////////
             DataOutputStream dOut = new DataOutputStream(socket.getOutputStream());
-            dOut.writeUTF("Mobile");
+            dOut.writeUTF(machineName);
             dOut.flush();
-            /////////////
+
             int bytesRead;
             InputStream inputStream = socket.getInputStream();
 

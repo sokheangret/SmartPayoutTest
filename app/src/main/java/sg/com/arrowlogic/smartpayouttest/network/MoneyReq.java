@@ -10,6 +10,7 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
@@ -25,6 +26,8 @@ public class MoneyReq extends AsyncTask<Void,Void,Void> {
         this.port = port;
         this.moneyReq = moneyReq;
         this.connectionCallback = connectionCallback;
+
+        //new Thread(new Client()).start();
     }
 
     @Override
@@ -76,14 +79,34 @@ public class MoneyReq extends AsyncTask<Void,Void,Void> {
         super.onPostExecute(aVoid);
         Log.e("ConnectionReq",response);
         connectionCallback.onReceiveMoney(response);
-
-        //new GetThread().execute();
     }
 
     public interface ConnectionCallback {
         void onReceiveMoney(String data);
     }
 
+    /**
+     * TODO Try to get back from Smart Payout but it seem not work
+     */
+    class Client extends Thread {
+
+        public void run()
+        {
+            try
+            {
+                Socket socket = new Socket(ipAddress, port);
+                PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+                //out.println(json);
+                BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                String response = in.readLine();
+                connectionCallback.onReceiveMoney(response);
+                //socket.close();
+            }
+            catch(Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
     @SuppressLint("StaticFieldLeak")
     class GetThread extends AsyncTask<Void,Void,Void> {
         String textMessage;
