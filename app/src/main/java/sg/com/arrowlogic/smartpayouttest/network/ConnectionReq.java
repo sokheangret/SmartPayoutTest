@@ -75,11 +75,6 @@ public class ConnectionReq extends AsyncTask<Void,Void,Void> {
         super.onPostExecute(aVoid);
         Log.e("ConnectionReq",response);
         connectionCallback.onConnect(response);
-        if(response.contains("Mobile Connected")){
-
-        }else if(response.contains("CashMachine Connected")){
-
-        }
     }
 
     public interface ConnectionCallback {
