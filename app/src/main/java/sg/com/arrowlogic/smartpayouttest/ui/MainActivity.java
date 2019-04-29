@@ -41,19 +41,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.bt_10_usd :
-                reqInputMoney("*req-10");
+                reqInputMoney("*req-10$");
                 break;
 
             case R.id.bt_12_usd :
-                reqInputMoney("*req-12");
+                reqInputMoney("*req-12$");
                 break;
 
             case R.id.bt_14_usd :
-                reqInputMoney("*req-14");
+                reqInputMoney("*req-14$");
                 break;
 
             case R.id.bt_16_usd :
-                reqInputMoney("*req-16");
+                reqInputMoney("*req-16$");
                 break;
         }
     }
